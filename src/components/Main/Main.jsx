@@ -2,9 +2,16 @@ import React, { useContext } from 'react'
 import './Main.css'
 import {assets} from '../../assets/assets'
 import { Context } from '../../context/context'
+import { useNavigate } from 'react-router-dom';
+
 
 const Main = () => {
 
+    const navigate = useNavigate();
+
+    const goToLiveTranscription = () => {
+      navigate('/audio'); // or whatever your route is
+    };
     const {onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context);
 
 
@@ -69,7 +76,15 @@ const Main = () => {
                     <input onChange={(e)=>setInput(e.target.value)} value={input} placeholder='Enter your message here' />
                     <div>
                         <img src={assets.video_icon} alt="" />
-                        <img src={assets.mic_icon} alt="" />
+                        {/* <img src={assets.mic_icon} alt="" /> */}
+                        <div title="Start live transcription" className="tooltip-wrapper">
+                            <img
+                            src={assets.mic_icon}
+                            alt="Mic"
+                            onClick={goToLiveTranscription}
+                            />
+                            <span className="tooltip-text">Audio Mode</span>
+                        </div>
                         <img onClick={()=>onSent()} src={assets.send_icon} alt="" />
                     </div>
                 </div>

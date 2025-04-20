@@ -1,0 +1,88 @@
+.container {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh; /* full screen height */
+    background-color: #f8f3f3; /* optional */
+    width: 100%;
+  }
+  .audio {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px;
+    border-radius: 16px;
+    background-color: #ffffff; /* white background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* deeper shadow for elevation */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional: Add hover effect for extra elevation */
+.audio:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.elevated-button {
+  padding: 10px 20px;
+  background-color: #646464;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.elevated-button:hover {
+  background-color: #757575;
+  color: white;
+}
+
+button {
+  margin-top: 40px;
+  padding: 10px 20px;
+  background-color: #646464;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  width: fit-content;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #757575; /* slightly lighter shade */
+  color: white; /* maintain contrast and clarity */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle elevation */
+}
+
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+.audio h1{
+    background: -webkit-linear-gradient(16deg, #33e15e, #b93155);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+    font-size: 30px;
+}
+.left-section{
+  width: 35%;
+  background-size: cover;
+  background-position: center;
+}
+
+.right-section{
+  width: 65%;
+  display: flex;
+  justify-content: flex-start;
+}

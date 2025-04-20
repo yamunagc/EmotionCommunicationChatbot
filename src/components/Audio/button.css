@@ -1,0 +1,17 @@
+.elevated-button {
+    margin-top: 40px;
+    padding: 10px 20px;
+    background-color: #646464;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: fit-content;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* subtle elevation */
+  }
+  
+  .elevated-button:hover {
+    background-color: #757575;
+    color: white;
+  }
