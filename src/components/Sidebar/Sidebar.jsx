@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Sidebar.css'
 import {assets} from '../../assets/assets'
+import { Context } from "../../context/context";
 
 const Sidebar = () => {
 
-    const [extended,setExtended] = useState(false)
+    const [extended, setExtended] = useState(false);
+    const { chats, loadChat, newChat } = useContext(Context);
 
 
 
@@ -12,19 +14,26 @@ const Sidebar = () => {
     <div className='sidebar'>
         <div className="top">
             <img onClick={()=>setExtended(prev=>!prev)} className="menu" src={assets.menu_icon} alt="" />
-            <div className="new-chat">
+            <div className="new-chat" onClick={newChat}>
                 <img src={assets.plus_icon} alt="" />
                 {extended?<p>New Chat</p>:null}
             </div>
-            {extended?
+            {extended && (
                 <div className="recent">
                     <p className="recent-title">Recent</p>
-                    <div className="recent-entry">
-                        <img src={assets.message_icon} alt="" />
-                        <p>How are you feeling..</p>
+                    {chats.map(chat => (
+                    <div
+                        key={chat.id}
+                        onClick={() => loadChat(chat.id)}
+                        className="recent-entry"
+                    >
+                        <img src={assets.message_icon} alt="chat icon" />
+                        <p>{chat.title}</p>
                     </div>
+                    ))}
                 </div>
-            :null}
+            )}
+
         </div>
 
         <div className="bottom">

@@ -83,9 +83,7 @@ const Main = () => {
                         <p>{resultData}</p>
                         </div>
                     )}
-                    </div>
-
-              
+                </div>   
         )}
 
 
