@@ -15,6 +15,12 @@ import code_icon from './code_icon.png'
 import send_icon from './send_icon.png'
 import gemini_icon from './gemini_icon.png'
 import speak from './speak.png'
+import person_icon from './person.png'
+import email_icon from './email.png'
+import password_icon from './password.png'
+import peace_icon from './peace.png'
+import journal_icon from './journal.png'
+import idea_icon from './idea.png'
 
 
 export const assets = {
@@ -34,5 +40,11 @@ export const assets = {
     code_icon,
     send_icon,
     gemini_icon,
-    speak
+    speak,
+    person_icon,
+    email_icon,
+    password_icon,
+    peace_icon,
+    journal_icon,
+    idea_icon
 }

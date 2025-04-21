@@ -33,7 +33,7 @@
 }
 
 .main .greet span{
-    background: -webkit-linear-gradient(16deg, #33e15e, #b93155);
+    background: -webkit-linear-gradient(16deg, #3EECAC, #EE74E1);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -53,6 +53,8 @@
     border-radius: 10px;
     position: relative;
     cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15); 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .main .card img{

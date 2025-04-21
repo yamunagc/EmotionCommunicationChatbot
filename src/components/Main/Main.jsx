@@ -7,19 +7,29 @@ import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
 
+    const {onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context);
+
     const navigate = useNavigate();
 
     const goToLiveTranscription = () => {
-      navigate('/audio'); // or whatever your route is
+      navigate('/audio'); 
     };
-    const {onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context);
+    
 
+    const goToLoginSignup = () => {
+        navigate('/loginsignup'); 
+      };
 
   return (
     <div className='main'>
         <div className="nav">
-            <p>Chatbot</p>
-            <img src={assets.user_icon} alt="" />
+            <p> Emotive Conversational Agent</p>
+            <img 
+            src={assets.user_icon} 
+            alt="Account" 
+            style={{ cursor: 'pointer' }}
+            onClick={goToLoginSignup}
+            />
         </div>
 
         <div className="main-container">
@@ -27,26 +37,26 @@ const Main = () => {
             {!showResult
             ?<>
             <div className="greet">
-                <p><span>Hello, Yamuna</span></p>
-                <p>How are you today?</p>
+                <p><span>Hello, friend!</span></p>
+                <p>Want to talk about your day?</p>
             </div>
 
             <div className="cards">
                 <div className="card">
-                    <p>Can you recommend...</p>
+                    <p>I'm having trouble understanding how I feel right now. Can you help me make sense of it?</p>
                     <img src={assets.message_icon} alt="" />
                 </div>
                 <div className="card">
-                    <p>Can you suggest...</p>
-                    <img src={assets.message_icon} alt="" />
+                    <p>I’ve been thinking about something and could use a safe space to talk it out.</p>
+                    <img src={assets.idea_icon} alt="" />
                 </div>
                 <div className="card">
-                    <p>Can you recommend...</p>
-                    <img src={assets.message_icon} alt="" />
+                    <p>Can you share something comforting or kind that might help me feel more at ease?</p>
+                    <img src={assets.peace_icon} alt="" />
                 </div>
                 <div className="card">
-                    <p>Can you recommend...</p>
-                    <img src={assets.message_icon} alt="" />
+                    <p>I want to write about how I’m feeling, but I don’t know how to start. Can you guide me?</p>
+                    <img src={assets.journal_icon} alt="" />
                 </div>
             </div>
             </>
@@ -75,7 +85,7 @@ const Main = () => {
                 <div className="search-box">
                     <input onChange={(e)=>setInput(e.target.value)} value={input} placeholder='Enter your message here' />
                     <div>
-                        <img src={assets.video_icon} alt="" />
+                        
                         {/* <img src={assets.mic_icon} alt="" /> */}
                         <div title="Start live transcription" className="tooltip-wrapper">
                             <img
