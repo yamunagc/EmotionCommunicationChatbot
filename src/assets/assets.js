@@ -21,6 +21,7 @@ import password_icon from './password.png'
 import peace_icon from './peace.png'
 import journal_icon from './journal.png'
 import idea_icon from './idea.png'
+import logo_icon from './logo.png'
 
 
 export const assets = {
@@ -46,5 +47,6 @@ export const assets = {
     password_icon,
     peace_icon,
     journal_icon,
-    idea_icon
+    idea_icon,
+    logo_icon
 }

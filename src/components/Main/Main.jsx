@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
 
-    const {onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context);
+    const {onSent, chatHistory, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context);
 
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Main = () => {
   return (
     <div className='main'>
         <div className="nav">
-            <p> Emotive Conversational Agent</p>
+            <img src={assets.logo_icon} alt="" />
             <img 
             src={assets.user_icon} 
             alt="Account" 
@@ -34,52 +34,60 @@ const Main = () => {
 
         <div className="main-container">
 
-            {!showResult
-            ?<>
-            <div className="greet">
+        {chatHistory.length === 0 ? (
+            <>
+                <div className="greet">
                 <p><span>Hello, friend!</span></p>
                 <p>Want to talk about your day?</p>
-            </div>
-
-            <div className="cards">
-                <div className="card">
-                    <p>I'm having trouble understanding how I feel right now. Can you help me make sense of it?</p>
-                    <img src={assets.message_icon} alt="" />
-                </div>
-                <div className="card">
-                    <p>I’ve been thinking about something and could use a safe space to talk it out.</p>
-                    <img src={assets.idea_icon} alt="" />
-                </div>
-                <div className="card">
-                    <p>Can you share something comforting or kind that might help me feel more at ease?</p>
-                    <img src={assets.peace_icon} alt="" />
-                </div>
-                <div className="card">
-                    <p>I want to write about how I’m feeling, but I don’t know how to start. Can you guide me?</p>
-                    <img src={assets.journal_icon} alt="" />
-                </div>
-            </div>
-            </>
-            :<div className='result'>
-                <div className='result-title'>
-                    <img src={assets.user_icon} alt="" />
-                    <p>{recentPrompt}</p>
                 </div>
 
-                <div className="result-data">
-                    <img src={assets.user_icon} alt="" />
-                    {loading
-                    ?<div className='loader'>
-                        <hr />
-                        <hr />
-                        <hr />
-                    </div>
-                    :<p dangerouslySetInnerHTML={{__html:resultData}}></p>
+                <div className="cards">
+                {[
+                    {
+                    text: "I'm having trouble understanding how I feel right now. Can you help me make sense of it?",
+                    icon: assets.message_icon
+                    },
+                    {
+                    text: "I’ve been thinking about something and could use a safe space to talk it out.",
+                    icon: assets.idea_icon
+                    },
+                    {
+                    text: "Can you share something comforting or kind that might help me feel more at ease?",
+                    icon: assets.peace_icon
+                    },
+                    {
+                    text: "I want to write about how I’m feeling, but I don’t know how to start. Can you guide me?",
+                    icon: assets.journal_icon
                     }
-                    
+                ].map((card, index) => (
+                    <div key={index} className="card" onClick={() => { setInput(card.text); onSent(card.text); }}>
+                    <p>{card.text}</p>
+                    <img src={card.icon} alt="icon" />
+                    </div>
+                ))}
                 </div>
-            </div>
-            }
+            </>
+            ) : (
+                <div className="result">
+                    {chatHistory.map((msg, index) => (
+                        <div key={index} className="result-title">
+                        <img src={msg.sender === "user" ? assets.user_icon : assets.logo_icon} alt="avatar" />
+                        <p>{msg.message}</p>
+                        </div>
+                    ))}
+
+                    {/* Only show this block if typing effect is happening */}
+                    {resultData && (
+                        <div className="result-title">
+                        <img src={assets.logo_icon} alt="avatar" />
+                        <p>{resultData}</p>
+                        </div>
+                    )}
+                    </div>
+
+              
+        )}
+
 
             <div className="main-bottom">
                 <div className="search-box">
@@ -98,7 +106,7 @@ const Main = () => {
                         <img onClick={()=>onSent()} src={assets.send_icon} alt="" />
                     </div>
                 </div>
-                <p className='bottom-info'> Footer message </p>
+                <p className='bottom-info'> This is your space. Let’s take a moment together. </p>
             </div>
 
         </div>

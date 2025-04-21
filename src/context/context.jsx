@@ -2,8 +2,6 @@ import { createContext, useState } from "react";
 import runChat from "../config/chatbot";
 
 
-
-
 export const Context = createContext();
 
 const ContextProvider = (props) => {
@@ -14,29 +12,48 @@ const ContextProvider = (props) => {
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
     const[resultData, setResultData] = useState("");
+    const [chatHistory, setChatHistory] = useState([]);
 
-    const delayPara = (index,nextWord) => {
-        setTimeout(function(){
-            setResultData(prev=>prev+nextWord)
-        },75*index)
-    }
 
-    const onSent = async(prompt) =>{
+    const delayPara = (index, nextWord) => {
+        setTimeout(() => {
+          setResultData(prev => prev + nextWord); // This is what makes the typing visible
+        }, 75 * index);
+      };
 
-        setResultData("")
-        setLoading(true)
-        setShowResult(true)
-        setRecentPrompt(input)
-        const response = await runChat(input)
-        let responseArray = response.split(" ");
-        for(let i=0; i<responseArray.length;i++)
-        {
-            const nextWord = responseArray[i];
-            delayPara(i, nextWord+" ")
-        }
-        setLoading(false)
-        setInput("")
-    }
+      const onSent = async (prompt) => {
+        const message = prompt || input;
+        if (!message.trim()) return;
+      
+        setInput("");
+        setResultData("");
+        setLoading(true);
+        setShowResult(true);
+        setRecentPrompt(message);
+      
+        // Add user's message
+        setChatHistory(prev => [...prev, { sender: "user", message }]);
+      
+        const response = await runChat(message);
+        const responseArray = response.split(" ");
+      
+        let fullMessage = "";
+      
+        responseArray.forEach((word, i) => {
+          setTimeout(() => {
+            fullMessage += word + " ";
+            setResultData(fullMessage);
+          }, 75 * i);
+        });
+      
+        // After typing is done, move to history
+        setTimeout(() => {
+          setChatHistory(prev => [...prev, { sender: "bot", message: fullMessage.trim() }]);
+          setResultData(""); // Clear temporary message
+          setLoading(false);
+        }, 75 * responseArray.length + 100);
+      };
+    
 
     const contextValue = {
         prevPrompts,
@@ -48,7 +65,9 @@ const ContextProvider = (props) => {
         loading,
         resultData,
         input,
-        setInput
+        setInput,
+        chatHistory,
+        setChatHistory
 
     }
 
