@@ -16,8 +16,8 @@ const Main = () => {
     };
     
 
-    const goToLoginSignup = () => {
-        navigate('/loginsignup'); 
+    const goToSignin = () => {
+        navigate('/signin'); 
       };
 
   return (
@@ -28,7 +28,7 @@ const Main = () => {
             src={assets.user_icon} 
             alt="Account" 
             style={{ cursor: 'pointer' }}
-            onClick={goToLoginSignup}
+            onClick={goToSignin}
             />
         </div>
 
