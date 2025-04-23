@@ -5,6 +5,7 @@
     height: 100vh; /* full screen height */
     background-color: #f8f3f3; /* optional */
     width: 100%;
+    position: relative;
   }
   .audio {
     text-align: center;
@@ -60,7 +61,6 @@ button:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle elevation */
 }
 
-  
   .title {
     font-size: 24px;
     font-weight: bold;
@@ -85,4 +85,15 @@ button:hover {
   width: 65%;
   display: flex;
   justify-content: flex-start;
+}
+.Emotional-meter{
+  position: absolute;
+  right:20px;
+  bottom:20px;
+  text-align: center;
+}
+.emotional_meter_image{
+  height:200px;
+  width: 200px;
+  background-color: grey;
 }
