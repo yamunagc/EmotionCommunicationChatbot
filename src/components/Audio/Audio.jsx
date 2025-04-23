@@ -117,10 +117,9 @@ const AudioPage = () => {
   return (
     <div className="container">
       <div className="left-section" style={{ backgroundImage:  `url(${assets.speak})`,height:"100%"  }}></div>
-<div className='right-section'>
-
-      <div className="audio">
-        <h1 className="title">Emotional Agent</h1>
+       <div className='right-section'>
+          <div className="audio">
+          <h1 className="title">Emotional Agent</h1>
 
         <Audiovisualizer analyser={analyser} recording={recording} />
         <motion.div animate={{scale: [1, 1.05,1.15, 1],
@@ -156,6 +155,14 @@ const AudioPage = () => {
             {recording ? "Respond" : "Start Talking"}
           </motion.div>
       </div>
+    </div>
+    <div className='Emotional-meter'>
+      <p>Emotion Wheel</p>
+        <div className='emotional_meter_image'>
+          
+          <img src={assets.emotional_wheel} alt='Emotion Meter' />
+
+        </div>
     </div>
     </div>
   );

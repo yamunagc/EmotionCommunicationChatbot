@@ -22,7 +22,7 @@ import peace_icon from './peace.png'
 import journal_icon from './journal.png'
 import idea_icon from './idea.png'
 import logo_icon from './logo.png'
-
+import emotional_wheel from './emotion_wheel.jpg'
 
 export const assets = {
     history_icon,
@@ -48,5 +48,6 @@ export const assets = {
     peace_icon,
     journal_icon,
     idea_icon,
-    logo_icon
+    logo_icon,
+    emotional_wheel
 }
