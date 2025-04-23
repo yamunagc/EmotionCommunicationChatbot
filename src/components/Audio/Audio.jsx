@@ -157,8 +157,11 @@ const AudioPage = () => {
       </div>
     </div>
     <div className='Emotional-meter'>
-      <p>Emotion Meter</p>
+      <p>Emotion Wheel</p>
         <div className='emotional_meter_image'>
+          
+          <img src={assets.emotional_wheel} alt='Emotion Meter' />
+
         </div>
     </div>
     </div>
